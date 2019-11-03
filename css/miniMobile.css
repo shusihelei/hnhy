@@ -7,12 +7,3 @@
     opacity: 0.5 !important;
     pointer-events: none !important;
 }
-.demo-bottomNav{
-    position:absolute;
-     bottom:0px;
-     width:100%;
-     height:auto;
-     text-align:center;
-     z-index:2;
-     overflow:hidden;
-}
