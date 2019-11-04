@@ -10,8 +10,8 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
 	<meta name="format-detection" content="telephone=no" />
 	<title>实时监控</title>
-	<meta name="keywords" content="miniMobile的demo" />
-	<meta name="description" content="miniMobile是一个简单易用的移动框架！" />
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
 	<!-- miniMObile.css、js -->
 	<link rel="stylesheet" type="text/css" href="css/miniMobile.css" />
 	<script type="text/javascript" src="js/zepto.min.js"></script>
@@ -21,14 +21,15 @@
 	<!-- animate.css -->
 	<link rel="stylesheet" type="text/css"
 		href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css" />
-	<!-- photoswipe -->
 	<!-- swiper -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.5/css/swiper.min.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.5/js/swiper.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="plugins/photoswipe/photoswipe.css" />
 	<link rel="stylesheet" type="text/css" href="plugins/photoswipe/default-skin/default-skin.css" />
+	<!-- photoswipe -->
 	<script src="plugins/photoswipe/photoswipe.js" type="text/javascript" charset="utf-8"></script>
 	<script src="plugins/photoswipe/photoswipe-ui-default.js" type="text/javascript" charset="utf-8"></script>
+
 </head>
 
 <body class="fadeIn animated">
@@ -86,7 +87,70 @@
 			margin-top: -0.23rem !important;
 		}
 	</style>
+
 	<!--  -->
+	<div class="tabBox m3 f28">
+		<section class="swiper-container h60">				
+						<div class="btn-select w34 fl">
+							<font class="btn-select-content h8 w28 radius5 btn ">
+								<span>选择摄像头</span>&nbsp;&nbsp;
+								<i class="icon iconfont icon-unfold"></i>
+							</font>
+							<ul style=" z-index:999" class="btn-select-list disable radio5 bg-color-primary tabindexList">
+								<li class="p2 pl4 pr4 bg-color4   color8">
+									<span class="pl3">至高点</span>
+								</li>
+								<li class="p2 pl4 pr4 bg-color4   color8">
+									<span class="pl3">物料区</span>
+								</li>
+								<li class="p2 pl4 pr4 bg-color4 color8">
+									<span class="pl3">大门口</span>
+								</li>
+							</ul>
+						</div>
+						
+						<script type="text/javascript">
+							//下拉组件操作
+							$(".btn-select .btn-select-content").tap(function () {
+								$(this).siblings(".btn-select-list").toggle();
+							});
+							$(".btn-select .btn-select-list li").tap(function () {
+								$(this).parents(".btn-select").find(".btn-select-content span").text($(this).text());
+								$(this).parent(".btn-select-list").hide();
+							});
+						</script>
+					
+			<!-- <div class="tabindexList">
+				<span class="p2 pl4 pr4 bg-color4 bg-color5 color8">选项卡1</span>
+				<span class="p2 pl4 pr4 bg-color4 color8">选项卡2</span>
+				<span class="p2 pl4 pr4 bg-color4 color8">选项卡3</span>
+			</div> -->
+			<div class="swiper-wrapper">
+				<div class="swiper-slide bg-color5 p4">至高点摄像头<br />
+					<br />抱歉，暂无视频信息</div>
+			</div>
+		</section>
+	</div>
+	<style>
+		.tabindexList span {
+			display: inline-block;
+			cursor: pointer;
+		}
+	</style>
+	<script>
+		var swiper = new Swiper('.swiper-container', {
+			on: {
+				slideChangeTransitionStart: function () {
+					$(".tabindexList li").removeClass("bg-color5").eq(this.activeIndex).addClass("bg-color5");
+				}
+			}
+		});
+		$(".tabindexList li").click(function () {
+			var index = $(this).index();
+			$(".tabindexList li").removeClass("bg-color5").eq(index).addClass("bg-color5");
+			swiper.slideTo(index, 300, false);
+		})
+	</script>
 	<!-- 底部导航 -->
 	<nav class="demo-bottomNav mt6 w75 h12 pt1 t-c f28 bg-color8 o-h clearfix">
 		<div class="w15 fl">
